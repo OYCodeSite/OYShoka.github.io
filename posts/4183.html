@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="index,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,7 +16,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2020/7 - OY&#39;Blog</title>
+  <title>CentOS 7 安装 Redis - OY&#39;Blog</title>
+  
+    <meta name="keywords" content="CentOS 7">
   
 
   
@@ -477,7 +477,7 @@
 
   
   
-      <div class='cover-wrapper  featured' style="display: none;">
+      <div class='cover-wrapper post featured' style="display: none;">
         <canvas id="header_canvas" style="position:absolute;bottom:0;z-index: 1;" width="900" height="350"></canvas>
         
           <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/OY6090/pic@main/oy_img/20210122021433.jpg"></div>
@@ -549,8 +549,8 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">false</div>
-  <div id="pjax-pageTitle"></div>
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">CentOS 7 安装 Redis</div>
   <div id="pjax-enable-cover">true</div>
   <div id="pjax-comment-path"></div>
   <div id="pjax-comment-placeholder"></div>
@@ -862,7 +862,7 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Tue Jan 26 2021 17:40:51 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update" style="display: none;">Tue Jan 26 2021 17:40:41 GMT+0800 (GMT+08:00)</div>
             <div id="last-update-show">2021-01-26 日</div>
           
         </div>
@@ -924,225 +924,388 @@
 
   
 
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fal fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83"><span class="toc-text">一、安装环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85"><span class="toc-text">二、安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85"><span class="toc-text">1、安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%90%AF%E5%8A%A8%E6%B5%8B%E8%AF%95"><span class="toc-text">2、启动测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%85%B3%E9%97%AD"><span class="toc-text">3、关闭</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8D%B8%E8%BD%BD"><span class="toc-text">三、卸载</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
 
 </aside>
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable">
+  <article
+  class="article post white-box reveal md shadow floatable article-type-post"
+  id="post" itemscope itemprop="blogPost">
   
-  
-  
+
+
   
     
-    <h2 class="article-title" >
-      <a href="/posts/2922948377.html">
-        Linux 搭建 JavaEE 环境
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
       
-        LInux 搭建 JavaEE 环境一、安装 JDK(1.8)先将软件通过 xftp5 上传到 /opt 下
-
-解压缩到 /opt
-
-
-
-配置环境变量的配置文件 vim /etc/profile
-
-123JAVA_HOME&#x3D;&#x2F;opt&#x2F;opt&#x2F;jdk1.8.0_261PATH&#x3D;&#x2F;opt&#x2F;jdk1.8.0_261&#x2F;b...
+        <div class='headimg lazyload' data-bg='https://cdn.jsdelivr.net/gh/OY6090/cdn@1.3/Blogs_imgs/37.jpg'></div>
       
     
-  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        <time>2020-07-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Linux%E8%AF%AD%E8%A8%80/">Linux语言</a>
-        
-      </div>
-      
-        <div>
-            <a class='readmore' href='/posts/2922948377.html'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable">
-  
-  
-  
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title" >
-      <a href="/posts/2761314235.html">
-        Linux 笔记【适用新手】
-      </a>
-    </h2>
-  
-  <div class='md'>
     
-      
-        
-博客中所需要的工具我已经打包好，放在博客文章最后。
-里面包含了:
-
- PDF 版知识点
- Xshell
- Xftp
-
-
-第一章 开机、重启和用户登录注销Linux 目录结构：
-1.1 关机&amp;重启命令
-shutdown
-
-shutdown -h now : 表示立即关机
-
-shutdown -h 1 : 表示 1 分钟后关机
-
-shutdown -r now : 立即重启
-
-halt...
-      
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        <time>2020-07-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Linux%E8%AF%AD%E8%A8%80/">Linux语言</a>
-        
-      </div>
-      
-        <div>
-            <a class='readmore' href='/posts/2761314235.html'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/posts/6297.html">
+      <h1 class="title">
+        CentOS 7 安装 Redis
+      </h1>
+      <div class='new-meta-box'>
         
           
-            <div class='headimg lazyload' data-bg='https://cdn.jsdelivr.net/gh/OY6090/cdn@1.3/Blogs_imgs/14.jpg'></div>
-          
-        
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/6297.html">
-        CentOS 7 基本命令
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
             
-                            
-                    
-                    
-                        
-                    
-                                            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/OYCodeSite/CDN@0.2/oy_img/avatar.jpg">
+    <p>OY</p>
+  </a>
+</div>
 
-CentOS7 常用命令集合
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fal fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/CentOS/">CentOS</a>
+    </a>
+  </div>
 
-&nbs...
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fal fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年1月26日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
+      <div id="lc-pv" data-title="CentOS 7 安装 Redis" data-path="/posts/4183.html">
+        <i class="fal fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+
+  
+  <h1 id="CentOS-7-安装-Redis"><a href="#CentOS-7-安装-Redis" class="headerlink" title="CentOS 7 安装 Redis"></a>CentOS 7 安装 Redis</h1><h2 id="一、安装环境"><a href="#一、安装环境" class="headerlink" title="一、安装环境"></a>一、安装环境</h2><blockquote>
+<ul>
+<li>CnetOS 7</li>
+<li>Redis 3.2.5 (没有唯一性)</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Redis 官方网站</th>
+<th>Redis 中文官方网站</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://redis.io/"><strong>http://Redis.io</strong></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.redis.net.cn/"><strong>http://www.Redis.net.cn</strong></a></td>
+</tr>
+</tbody></table>
+<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><h3 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h3><ol>
+<li><strong>下载获得 redis-3.2.5.tar.gz 后将它放入我们的 Linux 目录/opt</strong></li>
+</ol>
+<p><img src="https://pic.oy6090.top/img/20210126164332.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126164332.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126164324483"></p>
+<ol start="2">
+<li><strong>解压</strong></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf redis-3.2.5.tar.gz</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.oy6090.top/img/20210126164534.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126164534.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126164534139"></p>
+<ol start="3">
+<li><p><strong>在 redis-3.2.5 目录下执行 make 命令</strong> <strong>（redis 使用 C 语言编写的）</strong></p>
+<p>如果<strong>make</strong> 执行<strong>成功</strong>，可以跳过以下，直接 执行 <code>第五步</code>（<strong>执行 make install</strong>）</p>
+</li>
+</ol>
+<p><img src="https://pic.oy6090.top/img/20210126164815.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126164815.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126164814834"></p>
+<p><code>注意：</code> 运行 make 命令时出现故障意出现的错误解析：<strong>gcc</strong>：命令未找到</p>
+<p><strong>运行一下命令：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc</span><br><span class="line"></span><br><span class="line">yum install gcc-c++</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><strong>在 redis-3.2.5 目录下再次执行 make 命令</strong></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.oy6090.top/img/20210126165117.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126165117.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126165115970"></p>
+<p><code>在一次报错，解决方案：</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make distclean</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.oy6090.top/img/20210126165222.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126165222.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126165221909"></p>
+<p><strong>在 redis-3.2.5 目录下再次执行 make 命令</strong></p>
+<p><img src="https://pic.oy6090.top/img/20210126165420.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126165420.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126165419874"></p>
+<ol start="5">
+<li><strong>执行 make install</strong></li>
+</ol>
+<p><img src="https://pic.oy6090.top/img/20210126165832.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126165832.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126165832147"></p>
+<h3 id="2、启动测试"><a href="#2、启动测试" class="headerlink" title="2、启动测试"></a>2、启动测试</h3><p>进入默认安装目录：<strong>usr/local/bin</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze0txryr001i924054zZ redis-3.2.5]# cd /usr/local/bin</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.oy6090.top/img/20210126170016.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126170016.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126170015705"></p>
+<ul>
+<li><p>Redis-benchmark:性能测试工具，可以在自己本子运行，看看自己本子性能如何(服务启动起来后执行)</p>
+</li>
+<li><p>Redis-check-aof：修复有问题的 AOF 文件，rdb 和 aof 后面讲</p>
+</li>
+<li><p>Redis-check-dump：修复有问题的 dump.rdb 文件</p>
+</li>
+<li><p>Redis-sentinel：Redis 集群使用</p>
+</li>
+<li><p><strong>redis-server</strong>：Redis 服务器启动命令</p>
+</li>
+<li><p><strong>redis-cli</strong>：客户端，操作入口</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze0txryr001i924054zZ bin]# redis-server</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.oy6090.top/img/20210126170316.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126170316.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126170315758"></p>
+<blockquote>
+<p><strong>备份 redis.conf</strong>：拷贝一份 redis.conf 到其他目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp  /opt/redis-3.2.5/redis.conf  /myredis</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：myredis 这个目录在拷贝之前要存在,没有的话自己先创建在拷贝</p>
+<blockquote>
+<p><strong>修改 myredis 的 redis.conf 文件</strong></p>
+</blockquote>
+<p><img src="https://pic.oy6090.top/img/20210126170747.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126170747.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126170746159"></p>
+<p><strong>修改 redis.conf(128</strong>行)<strong>文件将里面的 daemonize no</strong> <strong>改成 yes</strong>，让服务在后台启动</p>
+<p><img src="https://pic.oy6090.top/img/20210126170858.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126170858.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126170857792"></p>
+<blockquote>
+<p><strong>启动命令</strong></p>
+</blockquote>
+<p>执行 <code>redis-server /myredis/redis.conf </code><strong>（变为后台启动）</strong></p>
+<p><img src="https://pic.oy6090.top/img/20210126171126.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126171126.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126171125872"></p>
+<blockquote>
+<p><strong>客户端访问: Redis-cli</strong></p>
+</blockquote>
+<p><img src="https://pic.oy6090.top/img/20210126171209.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126171209.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126171208826"></p>
+<p><strong>多个端口可以 Redis-cli</strong> <strong>–p 6379</strong></p>
+<blockquote>
+<p><strong>测试验证： ping</strong></p>
+</blockquote>
+<p><img src="https://pic.oy6090.top/img/20210126171247.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126171247.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126171246578"></p>
+<h3 id="3、关闭"><a href="#3、关闭" class="headerlink" title="3、关闭"></a>3、关闭</h3><blockquote>
+<p><strong>单实例关闭：Redis-cli shutdown</strong></p>
+</blockquote>
+<p><img src="https://pic.oy6090.top/img/20210126171334.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126171334.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126171333642"></p>
+<blockquote>
+<p><strong>也可以进入终端后再关闭</strong></p>
+</blockquote>
+<p><img src="https://pic.oy6090.top/img/20210126171406.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126171406.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126171405785"></p>
+<blockquote>
+<p><strong>多实例关闭</strong></p>
+</blockquote>
+<p>​ <strong>指定端口关闭:Redis-cli -p 6379 shutdown</strong></p>
+<h2 id="三、卸载"><a href="#三、卸载" class="headerlink" title="三、卸载"></a>三、卸载</h2><ol>
+<li>查看 redis 是否允许</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep redis</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.oy6090.top/img/20210126171649.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126171649.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126171648881"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli shutdown # 关闭redis</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>删除 make 的时候生成的几个 redisXXX 的文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f /usr/local/bin/redis*</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.oy6090.top/img/20210126171802.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126171802.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126171801308"></p>
+<ol start="3">
+<li>删除掉解压后的文件目录和所以文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /usr/local/redis</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.oy6090.top/img/20210126171853.png" class="lazyload" data-srcset="https://pic.oy6090.top/img/20210126171853.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210126171852651"></p>
+
+  
+  
+  
+  <div class='footer'>
+    
+    
+    
+  <div class="related_posts">
+    <section class='header'>
+      <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
+    </section>
+    <section class='body'>
+      <div class="vlts-rps"><a class="item" href="\posts\1c9cc24c.html" title="CentOS 7 安装 MySQL 5.7" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20201210155701.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20201210155701.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">CentOS 7 安装 MySQL 5.7</span></a><a class="item" href="\posts\2922948377.html" title="Linux 搭建 JavaEE 环境" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200715223403.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200715223403.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Linux 搭建 JavaEE 环境</span></a><a class="item" href="\posts\427140827.html" title="Linux之Shell编程" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200717225636.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200717225636.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Linux之Shell编程</span></a><a class="item" href="\posts\6297.html" title="CentOS 7 基本命令" rel="bookmark "><img src="https://img-blog.csdn.net/20160730112730329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" class="lazyload" data-srcset="https://img-blog.csdn.net/20160730112730329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">CentOS 7 基本命令</span></a></div></section></div>
+    
+    
+    <div class='copyright'>
+      <blockquote>
+        
+        
+        <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+        
+        
+        
+        <p>本文永久链接是：<a href=http://blog.oy6090.top/posts/4183.html>http://blog.oy6090.top/posts/4183.html</a></p>
+        
+        
+      </blockquote>
+    </div>
+    
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        <time>2020-07-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CentOS/">CentOS</a>
-        
-      </div>
+  
+  
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
       
-        <div>
-            <a class='readmore' href='/posts/6297.html'>
-            阅读全文
-          </a>
-        </div>
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-26T17:40:07+08:00">
+  <a class='notlink'>
+    <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年1月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CentOS-7/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>CentOS 7</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.oy6090.top/posts/4183.html&title=CentOS 7 安装 Redis - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.oy6090.top/posts/4183.html&title=CentOS 7 安装 Redis - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.oy6090.top/posts/4183.html&title=CentOS 7 安装 Redis - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
+  </div>
+
+
+  
   
 
+  
+  <div class="prev-next">
+    
+    
+    <a class='next' href='/posts/4250.html'>
+      <p class='title'>Vue 基础总结（2.X）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+      <p class='content'>
+GitHub 源码：https://github.com/OYCodeSite/VueCode.git
+
+vue 环境搭建一、初始化项目
+生成 package.json
+
+1yarn init...</p>
+    </a>
+    
+  </div>
+  
+</article>
+
+
+
+
+  <article class="post white-box reveal shadow floatable" id="comments">
+    <p ct><i class='fal fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2020/07/">
-            <section class="post prev white-box shadow floatable" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 2
-        </p>
-        
-      </div>
-    
-  
+  </article>
 
 
-	
+
+
+
 </div>
-
-
       </div>
       
   
