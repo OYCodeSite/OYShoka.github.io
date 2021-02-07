@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/1.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>SpringSecurity 基础总结 - OY&#39;Blog</title>
+  
+    <meta name="keywords" content="Spring">
+  
+
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="OY'Blog" type="application/atom+xml">
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/heson525/fontawesome-pro@5.13.1/css/all.min.css">
+
+  
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+
+  
+    <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/OYCodeSite/CDN@0.2/oy_img/logo.png">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap" media="print" onload="this.media='all'">
+  
+
+
+  <!-- import link -->
+  
+
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.2.0/styles/a11y-dark.css">
+
+    
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <!-- 脚本懒加载函数 -->
+    <script>
+      function loadScript(src, cb) {
+        var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+        var script = document.createElement('script');
+        script.setAttribute('type','text/javascript');
+        if (cb) script.onload = cb;
+        script.setAttribute('src', src);
+        HEAD.appendChild(script);
+      }
+       </script>
+    
+</head>
+
+<body>
+  <header class="l_header auto shadow floatable blur" style='opacity: 0' >
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/OYCodeSite/CDN@0.2/oy_img/logo.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fal fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                  
+                  
+                  >
+                  <i class='fal fa-search fa-fw'></i>找文章
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fal fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fal fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fal fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/guestbook/
+                  
+                  
+                  
+                    id="guestbook"
+                  >
+                  <i class='fal fa-comments fa-fw'></i>留言板
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fal fa-address-card fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/links/
+                  
+                  
+                  
+                    id="links"
+                  >
+                  <i class='fal fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/bb/
+                  
+                  
+                  
+                    id="bb"
+                  >
+                  <i class='fal fa-microphone-alt fa-fw'></i>哔哔
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://travellings.now.sh/
+                  
+                  
+                  
+                    id="https:travellingsnowsh"
+                  >
+                  <i class='fal fa-paper-plane fa-fw'></i>开往
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fal fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="搜索..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fal fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fal fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                  
+                  
+                  >
+                  <i class='fal fa-search fa-fw'></i>找文章
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fal fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fal fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fal fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/guestbook/
+                  
+                  
+                  
+                    id="guestbook"
+                  >
+                  <i class='fal fa-comments fa-fw'></i>留言板
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fal fa-address-card fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/links/
+                  
+                  
+                  
+                    id="links"
+                  >
+                  <i class='fal fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/bb/
+                  
+                  
+                  
+                    id="bb"
+                  >
+                  <i class='fal fa-microphone-alt fa-fw'></i>哔哔
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://travellings.now.sh/
+                  
+                  
+                  
+                    id="https:travellingsnowsh"
+                  >
+                  <i class='fal fa-paper-plane fa-fw'></i>开往
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div class="l_body">
+    <div class="l_cover">
+
+  
+  
+      <div class='cover-wrapper post featured' style="display: none;">
+        <canvas id="header_canvas" style="position:absolute;bottom:0;z-index: 1;" width="900" height="350"></canvas>
+        
+          <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/OY6090/pic@main/oy_img/20210122021433.jpg"></div>
+        
+        <div class='cover-body'>
+  <div class='top'>
+    
+    
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fad fa-home fa-fw'></i><p>首页</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <i class='fad fa-archive fa-fw'></i><p>归档</p>
+            </a>
+          
+            <a href="/bb/"
+              
+              
+              id="bb">
+              <i class='fad fa-microphone-alt fa-fw'></i><p>说说</p>
+            </a>
+          
+            <a href="/links/"
+              
+              
+              id="links">
+              <i class='fad fa-link fa-fw'></i><p>友链</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://oy6090.top"
+              
+              
+              id="https:oy6090top">
+              <i class='fad fa-paper-plane fa-fw'></i><p>站点</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+      </div>
+  
+
+</div>
+
+    <div class='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+
+
+<div id="pjax-data" style="display: none">
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">SpringSecurity 基础总结</div>
+  <div id="pjax-enable-cover">true</div>
+  <div id="pjax-comment-path"></div>
+  <div id="pjax-comment-placeholder"></div>
+</div>
+
+
+<script>
+  // 处理封面 此时 jquery 还没加载
+  if ("none" == "none") { // 移除封面
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none";
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
+  } else {
+    if ("none" == "half") { // 半屏
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half');
+      document.getElementsByClassName('scroll-down')[0].style.display = "none";
+    } else if ("none" == "full") { // 全屏
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full');
+      document.getElementsByClassName('scroll-down')[0].style.display = "";
+    }
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "";
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
+  }
+</script>
+
+
+        
+        
+
+<aside class='l_side'>
+  <div style="margin-bottom: 16px;border-radius: 8px;" class='shadow floatable widget_author desktop'>
+    <div id="zuozhebg" class="newauthor"
+      style="background: url('https://cdn.jsdelivr.net/gh/OY6090/cdn@1.3/Blogs_imgs/11.jpeg') center center no-repeat;background-size:cover">
+    </div>
+    <div class="relive_widget_v3">
+      <div class="box-author-info">
+        <div class="author-face">
+          <a href="/about" target="_blank" rel="nofollow" title="关于OY">
+            <img no-lazy alt="" src="https://cdn.jsdelivr.net/gh/OYCodeSite/CDN@0.2/oy_img/avatar.jpg"
+              class="avatar avatar-200 photo" height="200" width="200"> </a>
+        </div>
+        <div class="author-name">OY</div>
+        <div id="author-one" class="author-one">
+          <script>
+            var binft = function (r) {
+              function t() {
+                return b[Math.floor(Math.random() * b.length)]
+              }
+              function e() {
+                return String.fromCharCode(94 * Math.random() + 33)
+              }
+              function n(r) {
+                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                  var l = document.createElement("span");
+                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                }
+                return n
+              }
+              function i() {
+                var t = o[c.skillI];
+                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+              }
+              var l = "",
+                o = ["人生在勤，不索何获", "日日待明日,万事成蹉跎", "丈夫志四海，万里犹比邻", "还在看这里吗？", "能不能别看了？", "文章更精彩...."].map(function (r) {
+                  return r + ""
+                }),
+                a = 2,
+                g = 1,
+                s = 5,
+                d = 75,
+                b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+                c = {
+                  text: "",
+                  prefixP: -s,
+                  skillI: 0,
+                  skillP: 0,
+                  direction: "forward",
+                  delay: a,
+                  step: g
+                };
+              i()
+            };
+            binft(document.getElementById('author-one'));
+          </script>
+
+
+        </div>
+        <div class="site-state-wrap motion-element">
+          <nav class="site-state">
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+       
+      <!-- 主题配置文件开启此功能 按需修改文章标题和链接  -->
+      <dl class="article-newest">
+        <dt>———<span class="tit" style="font-weight: bold;">热门文章</span>———</dt>
+        <li>
+          <span class="order od-1">1</span>
+          <a href="/posts/41875.html" title="Vue 核心基础（2.X）"><i
+              class="iconfont icon-sanjiao"></i>Vue 核心基础（2.X）</a>
+        </li>
+        <li>
+          <span class="order od-2">2</span>
+          <a href="/posts/6b30c31b.html" title="MySQL 主从复制"><i class="iconfont icon-sanjiao"></i>MySQL 主从复制</a>
+        </li>
+        <li>
+          <span class="order od-3">3</span>
+          <a href="/posts/1c9cc24c.html" title="CentOS 7 安装 MySQL 5.7"><i class="iconfont icon-sanjiao"></i>CentOS 7 安装 MySQL 5.7</a>
+        </li>
+        <li>
+          <span class="order od-4">4</span>
+          <a href="/posts/43758.html" title="Docker 基本操作总结"><i
+              class="iconfont icon-sanjiao"></i>Docker 基本操作总结</a>
+        </li>
+        <li>
+          <span class="order od-5">5</span>
+          <a href="/posts/a8da4fb0.html" title="SpringCloud Alibaba Seata 处理分布式事务"><i
+              class="iconfont icon-sanjiao"></i>SpringCloud Alibaba Seata 处理分布式事务</a>
+        </li>
+        <li>
+          <span class="order od-6">6</span>
+          <a href="/posts/13005592.html" title="SpringCloud Alibaba Sentinel 实现熔断与限流"><i
+              class="iconfont icon-sanjiao"></i>SpringCloud Alibaba Sentinel 实现熔断与限流</a>
+        </li>
+      </dl>
+      
+
+    </div>
+  </div>
+
+  
+
+  
+  
+    
+    
+  
+
+  <section class="widget category shadow floatable desktop">
+    
+  <header>
+    
+      <a href='/categories/'><i class="fal fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/CentOS/" href="/categories/CentOS/"
+            id="categoriesCentOS"
+            ><div class='name'>CentOS</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Git%E5%B7%A5%E5%85%B7/" href="/categories/Git%E5%B7%A5%E5%85%B7/"
+            id="categoriesGitE5B7A5E585B7"
+            ><div class='name'>Git工具</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/JavaEE%E6%A1%86%E6%9E%B6/" href="/categories/JavaEE%E6%A1%86%E6%9E%B6/"
+            id="categoriesJavaEEE6A186E69EB6"
+            ><div class='name'>JavaEE框架</div><div class='badge'>(36)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Linux/" href="/categories/Linux/"
+            id="categoriesLinux"
+            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Linux%E8%AF%AD%E8%A8%80/" href="/categories/Linux%E8%AF%AD%E8%A8%80/"
+            id="categoriesLinuxE8AFADE8A880"
+            ><div class='name'>Linux语言</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/MySQL/" href="/categories/MySQL/"
+            id="categoriesMySQL"
+            ><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Redis/" href="/categories/Redis/"
+            id="categoriesRedis"
+            ><div class='name'>Redis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Web%E5%89%8D%E7%AB%AF/" href="/categories/Web%E5%89%8D%E7%AB%AF/"
+            id="categoriesWebE5898DE7ABAF"
+            ><div class='name'>Web前端</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%B7%A5%E5%85%B7/" href="/categories/%E5%B7%A5%E5%85%B7/"
+            id="categoriesE5B7A5E585B7"
+            ><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
+            id="categoriesE695B0E68DAEE5BA93"
+            ><div class='name'>数据库</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+
+  
+
+  
+    
+    
+
+<section class="widget text shadow floatable desktop">
+  
+  <header>
+    
+      <i class="fal fa-comments fa-fw" aria-hidden="true"></i><span class='name'>最新评论</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <div id="hot-comments"></div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fal fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="webinfo">
+      
+        <div class="webinfo-item">
+          <div>文章数目：</div>
+          <div>49 篇</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>已运行时间：</div>
+          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
+        </div>
+        <script>
+          var BirthDay = new Date(new Date('2021/1/22'));
+          var today = new Date();
+          var timeold = (today.getTime() - BirthDay.getTime());
+          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
+          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
+        </script>
+      
+
+
+      
+        <div class="webinfo-item">
+          <div>本站总字数：</div>
+          <div>159.9k 字</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站访客数：</div>
+          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站总访问量：</div>
+          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>最后活动时间：</div>
+          
+            <div id="last-update" style="display: none;">Sun Feb 07 2021 09:00:36 GMT+0000 (Coordinated Universal Time)</div>
+            <div id="last-update-show">2021-02-07 日</div>
+          
+        </div>
+        
+        <script>
+          function timeago(dateTimeStamp) {
+              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
+              var hour = minute * 60;
+              var day = hour * 24;
+              var week = day * 7;
+              var month = day * 30;
+              var now = new Date().getTime(); //获取当前时间毫秒
+              var diffValue = now - dateTimeStamp; //时间差
+              if (diffValue < 0) {
+                  return;
+              }
+              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
+              var hourC = diffValue / hour;
+              var dayC = diffValue / day;
+              var weekC = diffValue / week;
+              var monthC = diffValue / month;
+              if (monthC >= 1 && monthC <= 3) {
+                  result = " " + parseInt(monthC) + " 月前"
+              } else if (weekC >= 1 && weekC <= 3) {
+                  result = " " + parseInt(weekC) + " 周前"
+              } else if (dayC >= 1 && dayC <= 6) {
+                  result = " " + parseInt(dayC) + " 天前"
+              } else if (hourC >= 1 && hourC <= 23) {
+                  result = " " + parseInt(hourC) + " 小时前"
+              } else if (minC >= 1 && minC <= 59) {
+                  result = " " + parseInt(minC) + " 分钟前"
+              } else if (diffValue >= 0 && diffValue <= minute) {
+                  result = "刚刚"
+              } else {
+                  var datetime = new Date();
+                  datetime.setTime(dateTimeStamp);
+                  var Nyear = datetime.getFullYear();
+                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+                  result = Nyear + "-" + Nmonth + "-" + Ndate
+              }
+              return result;
+          }
+          var lastUpDate = document.getElementById('last-update').innerHTML;
+          try {
+            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
+          } catch (error) {
+            document.getElementById('last-update-show').innerHTML = '2021-02-07 日';
+          }
+        </script>
+        
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fal fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-text">一、简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%96%87%E6%A1%A3"><span class="toc-text">1、文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">2、使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%A6%82%E5%BF%B5"><span class="toc-text">3、概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81SpringSecurity-HellWorld"><span class="toc-text">二、SpringSecurity-HellWorld</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">1、测试环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%88%9B%E5%BB%BA%E6%99%AE%E9%80%9A%E7%9A%84-maven-war-%E5%B7%A5%E7%A8%8B%EF%BC%9Aspring-security-helloworld"><span class="toc-text">1.1 创建普通的 maven-war 工程：spring-security-helloworld</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%BC%95%E5%85%A5-SpringSecurity-%E6%A1%86%E6%9E%B6"><span class="toc-text">2、引入 SpringSecurity 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%B7%BB%E5%8A%A0-security-pom-%E4%BE%9D%E8%B5%96"><span class="toc-text">2.1 添加 security-pom 依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-web-xml-%E4%B8%AD%E6%B7%BB%E5%8A%A0-SpringSecurity-%E7%9A%84-Filter-%E8%BF%9B%E8%A1%8C%E5%AE%89%E5%85%A8%E6%8E%A7%E5%88%B6"><span class="toc-text">2.2 web.xml 中添加 SpringSecurity 的 Filter 进行安全控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%8A%A0%E5%85%A5-SpringSecurity-%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">2.3 加入 SpringSecurity 配置类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%90%AF%E5%8A%A8%E6%B5%8B%E8%AF%95%E6%95%88%E6%9E%9C"><span class="toc-text">2.4 启动测试效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81SpringSecurity-%E5%AE%9E%E9%AA%8C"><span class="toc-text">三、SpringSecurity 实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AE%9E%E9%AA%8C%E4%B8%80%EF%BC%9A-%E6%8E%88%E6%9D%83%E9%A6%96%E9%A1%B5%E5%92%8C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-text">1、实验一： 授权首页和静态资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A-%E9%BB%98%E8%AE%A4%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E7%99%BB%E5%BD%95%E9%A1%B5"><span class="toc-text">2、实验二： 默认及自定义登录页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C%E4%B8%89%EF%BC%9A-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E5%8D%95%E7%99%BB%E5%BD%95%E9%80%BB%E8%BE%91%E5%88%86%E6%9E%90"><span class="toc-text">3、实验三： 自定义表单登录逻辑分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%AE%9E%E9%AA%8C%E5%9B%9B%EF%BC%9A-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AE%A4%E8%AF%81%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">4、实验四： 自定义认证用户信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%AE%9E%E9%AA%8C%E4%BA%94%EF%BC%9A%E7%94%A8%E6%88%B7%E6%B3%A8%E9%94%80%E5%AE%8C%E6%88%90"><span class="toc-text">5、实验五：用户注销完成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9A%E5%9F%BA%E4%BA%8E%E8%A7%92%E8%89%B2%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-text">6、实验六：基于角色的访问控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E5%AE%9E%E9%AA%8C%E4%B8%83%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AE%BF%E9%97%AE%E6%8B%92%E7%BB%9D%E5%A4%84%E7%90%86%E9%A1%B5%E9%9D%A2"><span class="toc-text">7、实验七：自定义访问拒绝处理页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E5%AE%9E%E9%AA%8C%E5%85%AB%EF%BC%9A%E8%AE%B0%E4%BD%8F%E6%88%91%E5%8A%9F%E8%83%BD"><span class="toc-text">8、实验八：记住我功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-%E8%AE%B0%E4%BD%8F%E6%88%91%E5%8A%9F%E8%83%BD-%E5%85%8D%E7%99%BB%E5%BD%95%E5%8E%9F%E7%90%86"><span class="toc-text">8.1 记住我功能-免登录原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-%E8%AE%B0%E4%BD%8F%E6%88%91-%E6%95%B0%E6%8D%AE%E7%89%88"><span class="toc-text">8.2 记住我-数据版</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%AE%A4%E8%AF%81"><span class="toc-text">四、认证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89-UserDatailsService-%E6%A3%80%E7%B4%A2%E7%94%A8%E6%88%B7"><span class="toc-text">1、自定义 UserDatailsService 检索用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93-MD5-%E5%AF%86%E7%A0%81-%E8%AE%A4%E8%AF%81"><span class="toc-text">2、基于数据库(MD5 密码)认证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E9%85%8D%E7%BD%AE-configure-AuthenticationManagerBuilder-auth"><span class="toc-text">2.1 配置 configure(AuthenticationManagerBuilder auth)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%BC%95%E5%85%A5-MD5-%E5%8A%A0%E5%AF%86%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%9AMD5Util-java"><span class="toc-text">2.2 引入 MD5 加密工具类：MD5Util.java</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-PasswordEncoder-%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E7%B1%BB%EF%BC%9APasswordEncoderImpl"><span class="toc-text">2.3 PasswordEncoder 接口实现类：PasswordEncoderImpl</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93-BCryptPasswordEncoder-%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E8%AE%A4%E8%AF%81"><span class="toc-text">3、基于数据库(BCryptPasswordEncoder)密码加密认证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-PasswordEncoder-%E6%8E%A5%E5%8F%A3"><span class="toc-text">3.1 PasswordEncoder 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E4%BD%BF%E7%94%A8-BCryptPasswordEncoder-%E8%BF%9B%E8%A1%8C%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86"><span class="toc-text">3.2 使用 BCryptPasswordEncoder 进行密码加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95"><span class="toc-text">3.3 本地测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-text">3.4 服务器运行测试</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+<div class='l_main'>
+  <article
+  class="article post white-box reveal md shadow floatable article-type-post"
+  id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    
+      
+        <div class='headimg lazyload' data-bg='https://cdn.jsdelivr.net/gh/OY6090/pic@main/oy_img/20210207141439.jpg'></div>
+      
+    
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        SpringSecurity 基础总结
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/OYCodeSite/CDN@0.2/oy_img/avatar.jpg">
+    <p>OY</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fal fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/JavaEE%E6%A1%86%E6%9E%B6/">JavaEE框架</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fal fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年2月7日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="SpringSecurity 基础总结" data-path="/posts/f1d1d958.html">
+        <i class="fal fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+
+  
+  <h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-security/site/docs/4.2.10.RELEASE/guides/html5/helloworld-xml.html">https://docs.spring.io/spring-security/site/docs/4.2.10.RELEASE/guides/html5/helloworld-xml.html</a></p>
+<p>SpringSecurity 融合 Spring 技术栈，提供 JavaEE 应 用的整体安全解决方案；</p>
+<p>Spring Security 为基于 Java EE 的企业软件应用提供<strong>全面</strong>的安全服务。</p>
+<p>Spring Security 只需要少量配置，就能构建一个强大的安全的应用系统。</p>
+<p>目前市面上受欢迎的两个安全框架：Apache Shiro、SpringSecurity；</p>
+<p>SpringSecurity 可以无缝整合 Spring 应用，具有强大的自动化 web 安全管控功能。而 Shiro 是一个轻量级强大的安全框架，可以脱离 web 应用来提供安全管控，但是对于 web 的一些定制安全需要手动编写；SpringBoot 底层默认整合 SpringSecurity 作为安全框架，所以我们推荐 web 应用使用 SpringSecurity 来控制安全；</p>
+<h3 id="1、文档"><a href="#1、文档" class="headerlink" title="1、文档"></a>1、文档</h3><p><strong>Hello Spring Security</strong> &lt;<a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/javaconfig/helloworld">https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/javaconfig/helloworld</a> &gt; 基于 Java 配置整合示例</p>
+<p><strong>Hello Spring Security Boot</strong> <a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/boot/helloworld">https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/boot/helloworld</a> 与 SpringBoot 整合案例</p>
+<p><strong>Hello Spring Security XML</strong> <a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/xml/helloworld">https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/xml/helloworld</a> 基于 XML 方式整合示例</p>
+<p><strong>Hello Spring MVC Security</strong> <a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/javaconfig/hellomvc">https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/javaconfig/hellomvc</a> SpringMVC 集成示例</p>
+<p><strong>Custom Login Form</strong> <a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/javaconfig/form">https://github.com/spring-projects/spring-security/tree/4.2.10.RELEASE/samples/javaconfig/form</a> 自定义登录表单示例</p>
+<h3 id="2、使用方式"><a href="#2、使用方式" class="headerlink" title="2、使用方式"></a>2、使用方式</h3><ul>
+<li><p>一种是全部利用配置文件，将用户、权限、资源(url)硬编码在 xml 文件中</p>
+</li>
+<li><p>二种是用户和权限用数据库存储，而资源(url)和权限的对应采用硬编码配置</p>
+</li>
+<li><p><code>三种是细分角色和权限，并将用户、角色、权限和资源均采用数据库存储，并且自定义过滤器，代替原有的FilterSecurityInterceptor过滤器， 并分别实现AccessDecisionManager、InvocationSecurityMetadataSourceService和UserDetailsService，并在配置文件中进行相应配置。</code></p>
+</li>
+<li><p>四是修改 springsecurity 的源代码，主要是修改 InvocationSecurityMetadataSourceService 和 UserDetailsService 两个类。</p>
+<ol>
+<li><p>InvocationSecurityMetadataSourceService</p>
+<p>将配置文件或数据库中存储的资源(url)提取出来加工成为 url 和权限列表的 Map 供 Security 使用</p>
+</li>
+<li><p>UserDetailsService</p>
+</li>
+</ol>
+</li>
+</ul>
+<p>​ 提取用户名和权限组成一个完整的(UserDetails)User 对象，该对象可以提供用户的详细信息供 AuthentationManager 进行认证与授权使用</p>
+<h3 id="3、概念"><a href="#3、概念" class="headerlink" title="3、概念"></a>3、概念</h3><blockquote>
+<p><strong>认证</strong></p>
+</blockquote>
+<p>​ <code>authenfication</code>: 身份验证</p>
+<p>​ “身份验证” 是指建立主体（principal）的过程，主体就是他们声称的是谁 （“主体” 通常指用户、设备或在应用程序中可以执行动作的其他系统）。也就是 “证明你是谁”。</p>
+<blockquote>
+<p><strong>授权</strong></p>
+</blockquote>
+<p>​ <code>authorization</code>: 授权</p>
+<p>​ “授权” 是指确定主体（principal） 是否被允许执行系统中某个动作的过程。也就是 “你能做什么！”</p>
+<blockquote>
+<p>为了达到“授权”决策（安全框架决定你是否有权限做此事），“身份验证”（authentication）过程已经建立了主体的身份（Principal）</p>
+</blockquote>
+<h2 id="二、SpringSecurity-HellWorld"><a href="#二、SpringSecurity-HellWorld" class="headerlink" title="二、SpringSecurity-HellWorld"></a>二、SpringSecurity-HellWorld</h2><h2 id="1、测试环境搭建"><a href="#1、测试环境搭建" class="headerlink" title="1、测试环境搭建"></a>1、测试环境搭建</h2><h3 id="1-1-创建普通的-maven-war-工程：spring-security-helloworld"><a href="#1-1-创建普通的-maven-war-工程：spring-security-helloworld" class="headerlink" title="1.1 创建普通的 maven-war 工程：spring-security-helloworld"></a>1.1 创建普通的 maven-war 工程：spring-security-helloworld</h3><p>​ <code>注意：</code>以下所有的测试都采用的 <strong>Idea</strong> 集成开发工具</p>
+<blockquote>
+<p><strong>pom 文件增加依赖</strong></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.20.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet.jsp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jsp-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>web.xml 配置</strong></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">&quot;4.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>spring 配置:spring.xml</strong></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:mvc</span>=<span class="string">&quot;http://www.springframework.org/schema/mvc&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.oy.security&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/WEB-INF/views/&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.jsp&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:default-servlet-handler</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>导入实验资源</strong></p>
+</blockquote>
+<ul>
+<li>需要资源的博客末尾有下载地址</li>
+<li>导入页面</li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203111442.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203111442.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203111400600"></p>
+<ul>
+<li>导入 controller</li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203165351.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203165351.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203165335907"></p>
+<blockquote>
+<p><strong>运行测试</strong></p>
+</blockquote>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203111543.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203111543.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203111542765"></p>
+<h2 id="2、引入-SpringSecurity-框架"><a href="#2、引入-SpringSecurity-框架" class="headerlink" title="2、引入 SpringSecurity 框架"></a>2、引入 SpringSecurity 框架</h2><h3 id="2-1-添加-security-pom-依赖"><a href="#2-1-添加-security-pom-依赖" class="headerlink" title="2.1 添加 security-pom 依赖"></a>2.1 添加 security-pom 依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.10.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.10.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 标签库 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-taglibs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.10.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-web-xml-中添加-SpringSecurity-的-Filter-进行安全控制"><a href="#2-2-web-xml-中添加-SpringSecurity-的-Filter-进行安全控制" class="headerlink" title="2.2 web.xml 中添加 SpringSecurity 的 Filter 进行安全控制"></a>2.2 web.xml 中添加 SpringSecurity 的 Filter 进行安全控制</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span><span class="comment">&lt;!--名称固定,不能变 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-加入-SpringSecurity-配置类"><a href="#2-3-加入-SpringSecurity-配置类" class="headerlink" title="2.3 加入 SpringSecurity 配置类"></a>2.3 加入 SpringSecurity 配置类</h3><ul>
+<li>@Configuration、@Bean 注解作用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span> <span class="comment">//声明当前类是一个配置类。相当与XML配置文件作用。</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span>  <span class="comment">//声明式配置，启用SpringSecurity安全机制。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppWebSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-启动测试效果"><a href="#2-4-启动测试效果" class="headerlink" title="2.4 启动测试效果"></a>2.4 启动测试效果</h3><p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203165804.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203165804.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203165802954"></p>
+<ul>
+<li>所有资源访问受限（包括静态资源）</li>
+<li>框架自带一个默认的登录界面</li>
+<li>账号密码错误会有提示</li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203170523.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203170523.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203170522858"></p>
+<ul>
+<li>查看登录页面的源码，发现有个 hidden-input: name = “<code>_csrf</code>“ 这个是 springsecurity 帮我们防止<code>“跨站请求伪造” </code>攻击；还可以防止表单重复提交。</li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203170648.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203170648.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203170641242"></p>
+<h2 id="三、SpringSecurity-实验"><a href="#三、SpringSecurity-实验" class="headerlink" title="三、SpringSecurity 实验"></a>三、SpringSecurity 实验</h2><h3 id="1、实验一：-授权首页和静态资源"><a href="#1、实验一：-授权首页和静态资源" class="headerlink" title="1、实验一： 授权首页和静态资源"></a>1、实验一： 授权首页和静态资源</h3><ul>
+<li>配置类 （<strong>AppWebSecurityConfig</strong> extends <strong>WebSecurityConfigurerAdapter</strong>）</li>
+<li><strong>重写 configure(HttpSecurity http)方法</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span> <span class="comment">// 声明当前类是一个配置类。相当于XML配置文件作用。</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span>  <span class="comment">//声明式配置，启用SpringSecurity安全机制</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppWebSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//super.configure(http); // 取消默认配置</span></span><br><span class="line">        http.authorizeRequests()</span><br><span class="line">                <span class="comment">// 设置匹配的资源放行</span></span><br><span class="line">                .antMatchers(<span class="string">&quot;/layui/**&quot;</span>,<span class="string">&quot;/index.jsp&quot;</span>).permitAll()</span><br><span class="line">                <span class="comment">// 剩余任何资源必须认证</span></span><br><span class="line">                .anyRequest().authenticated();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>测试结果</strong></li>
+</ul>
+<blockquote>
+<p>静态资源和 index.jsp 都可以访问</p>
+</blockquote>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203171904.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203171904.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203171903224"></p>
+<blockquote>
+<p>不存在的资源</p>
+</blockquote>
+<ol>
+<li>有权限无资源 400</li>
+</ol>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203172203.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203172203.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203172202192"></p>
+<ol start="2">
+<li>无权限</li>
+</ol>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203172243.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203172243.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203172242911"></p>
+<h3 id="2、实验二：-默认及自定义登录页"><a href="#2、实验二：-默认及自定义登录页" class="headerlink" title="2、实验二： 默认及自定义登录页"></a>2、实验二： 默认及自定义登录页</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//super.configure(http); // 取消默认配置</span></span><br><span class="line">    http.authorizeRequests()</span><br><span class="line">        <span class="comment">// 设置匹配的资源放行</span></span><br><span class="line">        .antMatchers(<span class="string">&quot;/layui/**&quot;</span>,<span class="string">&quot;/index.jsp&quot;</span>).permitAll()</span><br><span class="line">        <span class="comment">// 剩余任何资源必须认证</span></span><br><span class="line">        .anyRequest().authenticated();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实验二: 默认及自定义登录页</span></span><br><span class="line">    http.formLogin(); <span class="comment">// 默认登录页</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://localhost:8080/SpringSecurity/level3/3">http://localhost:8080/SpringSecurity/level3/3</a></li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203174331.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203174331.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203174330647"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//super.configure(http); // 取消默认配置</span></span><br><span class="line">    http.authorizeRequests()</span><br><span class="line">        <span class="comment">// 设置匹配的资源放行</span></span><br><span class="line">        .antMatchers(<span class="string">&quot;/layui/**&quot;</span>,<span class="string">&quot;/index.jsp&quot;</span>).permitAll()</span><br><span class="line">        <span class="comment">// 剩余任何资源必须认证</span></span><br><span class="line">        .anyRequest().authenticated();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实验二: 默认及自定义登录页</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自定义登录页</span></span><br><span class="line">    http.formLogin().loginPage(<span class="string">&quot;/index.jsp&quot;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​ 在访问没有权限资源或页面时，将会自动跳转到<code>index.jsp</code>登录页面</p>
+<ul>
+<li>在测试的时候需要先暂时<code>_csrf</code>这个功能</li>
+</ul>
+<blockquote>
+<input name="_csrf" type="hidden" value="755f0b3c-0965-430b-852e-dcf6c77e7edb" />
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.csrf().disable();</span><br></pre></td></tr></table></figure>
+<h3 id="3、实验三：-自定义表单登录逻辑分析"><a href="#3、实验三：-自定义表单登录逻辑分析" class="headerlink" title="3、实验三： 自定义表单登录逻辑分析"></a>3、实验三： 自定义表单登录逻辑分析</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//super.configure(http); // 取消默认配置</span></span><br><span class="line">    http.authorizeRequests()</span><br><span class="line">        <span class="comment">// 设置匹配的资源放行</span></span><br><span class="line">        .antMatchers(<span class="string">&quot;/layui/**&quot;</span>,<span class="string">&quot;/index.jsp&quot;</span>).permitAll()</span><br><span class="line">        <span class="comment">// 剩余任何资源必须认证</span></span><br><span class="line">        .anyRequest().authenticated();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自定义登录页</span></span><br><span class="line">    http.formLogin().loginPage(<span class="string">&quot;/index.jsp&quot;</span>)</span><br><span class="line">        .loginProcessingUrl(<span class="string">&quot;/index.jsp&quot;</span>)</span><br><span class="line">        .usernameParameter(<span class="string">&quot;loginacct&quot;</span>)</span><br><span class="line">        .passwordParameter(<span class="string">&quot;userpswd&quot;</span>)</span><br><span class="line">        .defaultSuccessUrl(<span class="string">&quot;/main.html&quot;</span>);</span><br><span class="line">    http.csrf().disable(); <span class="comment">// 禁用csrf</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>表单提交地址：${PATH }/index.jsp</p>
+</li>
+<li><p>表单提交请求方式：post</p>
+</li>
+<li><p>提交表单：</p>
+<ul>
+<li>引入 jquery: &lt;script src=”${PATH }/layui/jquery.min.js”&gt;&lt;/script&gt;</li>
+<li>$(“form”).submit();</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203181848.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203181848.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203181846728"></p>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203181906.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203181906.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203181905444"></p>
+<blockquote>
+<p>如果没有关闭 CSRF， 提交请求被拒绝， 需要暂时禁用 csrf：http.csrf().disable();</p>
+</blockquote>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203181951.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203181951.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203181950686"></p>
+<ul>
+<li>表单提交请求失败，提取错误消息：**${SPRING_SECURITY_LAST_EXCEPTION.message}**</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;layadmin-user-login-box layadmin-user-login-header&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>layuiAdmin<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>layui 官方出品的单页面后台管理模板系统<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;SPRING_SECURITY_LAST_EXCEPTION.message&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203182707.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203182707.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203182702663"></p>
+<h3 id="4、实验四：-自定义认证用户信息"><a href="#4、实验四：-自定义认证用户信息" class="headerlink" title="4、实验四： 自定义认证用户信息"></a>4、实验四： 自定义认证用户信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">// 默认认证</span></span><br><span class="line">    <span class="comment">//super.configure(auth);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//实验四：自定义认证用户信息 - 基于内存认证方式</span></span><br><span class="line">    auth.inMemoryAuthentication()</span><br><span class="line">        .withUser(<span class="string">&quot;zhangsan&quot;</span>).password(<span class="string">&quot;123456&quot;</span>).roles(<span class="string">&quot;学徒&quot;</span>,<span class="string">&quot;大师&quot;</span>)</span><br><span class="line">        .and()</span><br><span class="line">        .withUser(<span class="string">&quot;lisi&quot;</span>).password(<span class="string">&quot;123456&quot;</span>).authorities(<span class="string">&quot;罗汉拳&quot;</span>,<span class="string">&quot;武当长拳&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​ 输入用户名和密码之后一致，就可以登录页面后台，前提是与自己基于内存认证方式一致的用户名和密码</p>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203183706.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203183706.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203183705870"></p>
+<ul>
+<li>CSRF 跨站请求伪造</li>
+<li>SpringSecurity 添加了 crsf 功能 【DefaultCsrfToken】,所有的表单提交为了防止跨站请求的伪造，我们需要加上_csrf 项；或者，暂时禁用 <code>http.csrf().disable();</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 可以在页面任意位置加，没有唯一性</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;$&#123;_csrf.parameterName&#125;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;_csrf.token&#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203221250.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203221250.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203221217981"></p>
+<h3 id="5、实验五：用户注销完成"><a href="#5、实验五：用户注销完成" class="headerlink" title="5、实验五：用户注销完成"></a>5、实验五：用户注销完成</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//super.configure(http); // 取消默认配置</span></span><br><span class="line">    http.authorizeRequests()</span><br><span class="line">        <span class="comment">// 设置匹配的资源放行</span></span><br><span class="line">        .antMatchers(<span class="string">&quot;/layui/**&quot;</span>,<span class="string">&quot;/index.jsp&quot;</span>).permitAll()</span><br><span class="line">        <span class="comment">// 剩余任何资源必须认证</span></span><br><span class="line">        .anyRequest().authenticated();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//http.logout(); //默认注销请求  请求路径：&quot;/logout&quot;</span></span><br><span class="line">    http.logout().logoutUrl(<span class="string">&quot;/logout&quot;</span>).logoutSuccessUrl(<span class="string">&quot;/index.jsp&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;layui-nav-item&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;logout&quot;</span> <span class="attr">action</span>=<span class="string">&quot;$&#123;PATH&#125;/logout&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;$&#123;_csrf.parameterName&#125;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;_csrf.token&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">onclick</span>=<span class="string">&quot;$(&#x27;#logout&#x27;).submit()&quot;</span>&gt;</span>退出<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203222858.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203222858.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203222857350"></p>
+<ul>
+<li><p>/logout: 退出系统</p>
+</li>
+<li><p><code>如果csrf 开启，必须post、方式的/logout 请求，表单中需要增加 csrf token</code></p>
+</li>
+<li><p>logoutUrl()；退出系统需要发送的请求</p>
+</li>
+<li><p>logoutSuccessUrl()；退出系统成功以后要跳转的页面地址</p>
+</li>
+<li><p>addLogoutHandler()：自定义注销处理器</p>
+</li>
+<li><p>deleteCookies()：指定需要删除的 cookie</p>
+</li>
+<li><p>invalidateHttpSession()：session 失效（DEBUG）</p>
+</li>
+</ul>
+<h3 id="6、实验六：基于角色的访问控制"><a href="#6、实验六：基于角色的访问控制" class="headerlink" title="6、实验六：基于角色的访问控制"></a>6、实验六：基于角色的访问控制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    http.authorizeRequests()</span><br><span class="line">        <span class="comment">// 允许所有人都访问静态资源</span></span><br><span class="line">        .antMatchers(<span class="string">&quot;/layui/**&quot;</span>,<span class="string">&quot;/index.jsp&quot;</span>).permitAll()</span><br><span class="line">        .antMatchers(<span class="string">&quot;/level1/**&quot;</span>).hasRole(<span class="string">&quot;学徒&quot;</span>)</span><br><span class="line">        .antMatchers(<span class="string">&quot;/level2/**&quot;</span>).hasRole(<span class="string">&quot;大师&quot;</span>)</span><br><span class="line">        .antMatchers(<span class="string">&quot;/level3/**&quot;</span>).hasRole(<span class="string">&quot;宗师&quot;</span>)</span><br><span class="line">        <span class="comment">// 放置最后，以上没有规定的都需要权限认证</span></span><br><span class="line">        .anyRequest().authenticated();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<pre><code>1.  将.anyRequest().authenticated()错误的设置在前面，后面的设置就不起作用了。</code></pre>
+<ol start="2">
+<li> 设置所有, “/**“ 都可以访问，其他再进行的设置就不会起作用了</li>
+<li> 设置匿名访问/level3/** 可以不用登录，匿名访问：<code>.anyRequest().anonymous();</code></li>
+</ol>
+<p><strong>拥有该角色的资源可以访问，否则不可以访问</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">// 默认认证</span></span><br><span class="line">    <span class="comment">//super.configure(auth);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//实验四：自定义认证用户信息 - 基于内存认证方式</span></span><br><span class="line">    auth.inMemoryAuthentication()</span><br><span class="line">        .withUser(<span class="string">&quot;zhangsan&quot;</span>).password(<span class="string">&quot;123456&quot;</span>).roles(<span class="string">&quot;学徒&quot;</span>,<span class="string">&quot;大师&quot;</span>)</span><br><span class="line">        .and()</span><br><span class="line">        .withUser(<span class="string">&quot;自定义访问拒绝处理页面，lisi&quot;</span>).password(<span class="string">&quot;111111&quot;</span>).authorities(<span class="string">&quot;USER&quot;</span>,<span class="string">&quot;MANGER&quot;</span>);</span><br><span class="line">    	<span class="comment">// .withUser(&quot;lisi&quot;).password(&quot;123456&quot;).authorities(&quot;罗汉拳&quot;,&quot;武当长拳&quot;);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7、实验七：自定义访问拒绝处理页面"><a href="#7、实验七：自定义访问拒绝处理页面" class="headerlink" title="7、实验七：自定义访问拒绝处理页面"></a>7、实验七：自定义访问拒绝处理页面</h3><blockquote>
+<p>直接增加处理映射界面</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.exceptionHandling().accessDeniedPage(<span class="string">&quot;/unauth.html&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在控制器类中增加映射处理</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/unauth.html&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">unauth</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;unauth&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>增加显示页面，将 main.jsp 复制,命名为 unauth.jsp，增加一句提示信息</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>你无权访问该页面...<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203225724.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203225724.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203225722734"></p>
+<blockquote>
+<p><strong>测试显示效果</strong></p>
+</blockquote>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203225759.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203225759.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203225758442"></p>
+<h3 id="8、实验八：记住我功能"><a href="#8、实验八：记住我功能" class="headerlink" title="8、实验八：记住我功能"></a>8、实验八：记住我功能</h3><h4 id="8-1-记住我功能-免登录原理"><a href="#8-1-记住我功能-免登录原理" class="headerlink" title="8.1 记住我功能-免登录原理"></a>8.1 记住我功能-免登录原理</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.rememberMe();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>默认规则</p>
+</blockquote>
+<ul>
+<li>页面 checkbox 提交 <code>remember-me</code>参数</li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203230541.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203230541.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203230539852"></p>
+<ul>
+<li>默认记住 2 周登录状态：<code>AbstractRememberMeServices</code></li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203230713.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203230713.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203230712762"></p>
+<ul>
+<li>会在<strong>cookie</strong>中保存名为：remember-me 的 cookie</li>
+</ul>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203230802.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203230802.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203230802123"></p>
+<ul>
+<li>登录后页面，关闭浏览器，直接访问：<a target="_blank" rel="noopener" href="http://localhost:8080/SpringSecurity/main.html">http://localhost:8080/SpringSecurity/main.html</a> 可以成功访问，不必登录。</li>
+<li>这种方式，token 值是放置在内存中的，<strong>服务器端重启 tomcat,token 会失效</strong>。需要将 token 记录在数据库持久化才不会失效。</li>
+</ul>
+<h4 id="8-2-记住我-数据版"><a href="#8-2-记住我-数据版" class="headerlink" title="8.2 记住我-数据版"></a>8.2 记住我-数据版</h4><blockquote>
+<p><strong>引入 pom.xml 包</strong></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-orm<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.20.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mysql驱动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>配置数据源</strong></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置数据源 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.alibaba.druid.pool.DruidDataSource&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/security?useSSL=false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--  jdbcTemplate--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;jdbcTemplate&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.jdbc.core.JdbcTemplate&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>创建表</strong></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> persistent_logins (</span><br><span class="line">    username <span class="type">varchar</span>(<span class="number">64</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    series <span class="type">varchar</span>(<span class="number">64</span>) <span class="keyword">primary</span> <span class="keyword">key</span>,</span><br><span class="line">    token <span class="type">varchar</span>(<span class="number">64</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    last_used <span class="type">timestamp</span> <span class="keyword">not</span> <span class="keyword">null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203231620.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203231620.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203231619271"></p>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203231728.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203231728.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203231727138"></p>
+<blockquote>
+<p><strong>设置记住我</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">DataSource dataSource;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//记住我</span></span><br><span class="line">    JdbcTokenRepositoryImpl ptr = <span class="keyword">new</span> JdbcTokenRepositoryImpl();</span><br><span class="line">    ptr.setDataSource(dataSource);</span><br><span class="line">    http.rememberMe().tokenRepository(ptr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203232102.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203232102.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203232100434"></p>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203232127.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210203232127.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210203232126591"></p>
+<h2 id="四、认证"><a href="#四、认证" class="headerlink" title="四、认证"></a>四、认证</h2><h3 id="1、自定义-UserDatailsService-检索用户"><a href="#1、自定义-UserDatailsService-检索用户" class="headerlink" title="1、自定义 UserDatailsService 检索用户"></a>1、自定义 UserDatailsService 检索用户</h3><blockquote>
+<p><strong>创建表结构</strong></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t_admin` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `loginacct` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `userpswd` <span class="type">char</span>(<span class="number">32</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `username` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `email` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `createtime` <span class="type">char</span>(<span class="number">19</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">16</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span>  <span class="keyword">into</span> `t_admin`(`id`,`loginacct`,`userpswd`,`username`,`email`,`createtime`) <span class="keyword">values</span> (<span class="number">1</span>,<span class="string">&#x27;superadmin&#x27;</span>,<span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span>,<span class="string">&#x27;超级管理员&#x27;</span>,<span class="string">&#x27;admin@atguigu.com&#x27;</span>,<span class="string">&#x27;2019-01-12 17:18:00&#x27;</span>),(<span class="number">3</span>,<span class="string">&#x27;lisi&#x27;</span>,<span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span>,<span class="string">&#x27;lisi&#x27;</span>,<span class="string">&#x27;lisi@atguigu.com&#x27;</span>,<span class="string">&#x27;2019-01-12 17:18:00&#x27;</span>),(<span class="number">4</span>,<span class="string">&#x27;wangwu&#x27;</span>,<span class="string">&#x27;f1887d3f9e6ee7a32fe5e76f4ab80d63&#x27;</span>,<span class="string">&#x27;wangwu&#x27;</span>,<span class="string">&#x27;wangwu@163.com&#x27;</span>,<span class="string">&#x27;2019-01-12 17:18:00&#x27;</span>),(<span class="number">8</span>,<span class="string">&#x27;aaa&#x27;</span>,<span class="string">&#x27;123456&#x27;</span>,<span class="string">&#x27;aaa&#x27;</span>,<span class="string">&#x27;aaa@atguigu.com&#x27;</span>,<span class="string">&#x27;2019-01-12 17:18:00&#x27;</span>),(<span class="number">12</span>,<span class="string">&#x27;xxxx&#x27;</span>,<span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span>,<span class="string">&#x27;xxxx&#x27;</span>,<span class="string">&#x27;xxxx@163.com&#x27;</span>,<span class="string">&#x27;2019-01-21 10:54:36&#x27;</span>),(<span class="number">13</span>,<span class="string">&#x27;yy&#x27;</span>,<span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span>,<span class="string">&#x27;yy&#x27;</span>,<span class="string">&#x27;yy@atguigu.com&#x27;</span>,<span class="string">&#x27;2019-01-21 10:56:49&#x27;</span>),(<span class="number">14</span>,<span class="string">&#x27;qqq&#x27;</span>,<span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span>,<span class="string">&#x27;qqqq&#x27;</span>,<span class="string">&#x27;qqq@atguigu.com&#x27;</span>,<span class="string">&#x27;2019-01-21 11:00:01&#x27;</span>),(<span class="number">15</span>,<span class="string">&#x27;qqq456&#x27;</span>,<span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span>,<span class="string">&#x27;测试中文123&#x27;</span>,<span class="string">&#x27;qqq654@atguigu.com&#x27;</span>,<span class="string">&#x27;2019-01-21 11:15:53&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t_menu` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `pid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `icon` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `url` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">24</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span>  <span class="keyword">into</span> `t_menu`(`id`,`pid`,`name`,`icon`,`url`) <span class="keyword">values</span> (<span class="number">1</span>,<span class="number">0</span>,<span class="string">&#x27;控制面板&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-dashboard&#x27;</span>,<span class="string">&#x27;main.html&#x27;</span>),(<span class="number">2</span>,<span class="number">0</span>,<span class="string">&#x27;权限管理&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon glyphicon-tasks&#x27;</span>,<span class="keyword">NULL</span>),(<span class="number">3</span>,<span class="number">2</span>,<span class="string">&#x27;用户维护&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-user&#x27;</span>,<span class="string">&#x27;admin/index.html&#x27;</span>),(<span class="number">4</span>,<span class="number">2</span>,<span class="string">&#x27;角色维护&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-king&#x27;</span>,<span class="string">&#x27;role/index.html&#x27;</span>),(<span class="number">5</span>,<span class="number">2</span>,<span class="string">&#x27;权限维护&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-lock&#x27;</span>,<span class="string">&#x27;permission/index.html&#x27;</span>),(<span class="number">6</span>,<span class="number">2</span>,<span class="string">&#x27;菜单维护&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-th-list&#x27;</span>,<span class="string">&#x27;menu/index.html&#x27;</span>),(<span class="number">7</span>,<span class="number">0</span>,<span class="string">&#x27;业务审核&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-ok&#x27;</span>,<span class="keyword">NULL</span>),(<span class="number">8</span>,<span class="number">7</span>,<span class="string">&#x27;实名认证审核&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-check&#x27;</span>,<span class="string">&#x27;auth_cert/index.html&#x27;</span>),(<span class="number">9</span>,<span class="number">7</span>,<span class="string">&#x27;广告审核&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-check&#x27;</span>,<span class="string">&#x27;auth_adv/index.html&#x27;</span>),(<span class="number">10</span>,<span class="number">7</span>,<span class="string">&#x27;项目审核&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-check&#x27;</span>,<span class="string">&#x27;auth_project/index.html&#x27;</span>),(<span class="number">11</span>,<span class="number">0</span>,<span class="string">&#x27;业务管理&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-th-large&#x27;</span>,<span class="keyword">NULL</span>),(<span class="number">12</span>,<span class="number">11</span>,<span class="string">&#x27;资质维护&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-picture&#x27;</span>,<span class="string">&#x27;cert/index.html&#x27;</span>),(<span class="number">13</span>,<span class="number">11</span>,<span class="string">&#x27;分类管理&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-equalizer&#x27;</span>,<span class="string">&#x27;certtype/index.html&#x27;</span>),(<span class="number">14</span>,<span class="number">11</span>,<span class="string">&#x27;流程管理&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-random&#x27;</span>,<span class="string">&#x27;process/index.html&#x27;</span>),(<span class="number">15</span>,<span class="number">11</span>,<span class="string">&#x27;广告管理&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-hdd&#x27;</span>,<span class="string">&#x27;advert/index.html&#x27;</span>),(<span class="number">16</span>,<span class="number">11</span>,<span class="string">&#x27;消息模板&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-comment&#x27;</span>,<span class="string">&#x27;message/index.html&#x27;</span>),(<span class="number">17</span>,<span class="number">11</span>,<span class="string">&#x27;项目分类&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-list&#x27;</span>,<span class="string">&#x27;projectType/index.html&#x27;</span>),(<span class="number">18</span>,<span class="number">11</span>,<span class="string">&#x27;项目标签&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-tags&#x27;</span>,<span class="string">&#x27;tag/index.html&#x27;</span>),(<span class="number">19</span>,<span class="number">0</span>,<span class="string">&#x27;参数管理&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-list-alt&#x27;</span>,<span class="string">&#x27;param/index.html&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t_permission` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  `title` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  `icon` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `pid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">21</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span>  <span class="keyword">into</span> `t_permission`(`id`,`name`,`title`,`icon`,`pid`) <span class="keyword">values</span> (<span class="number">1</span>,<span class="keyword">NULL</span>,<span class="string">&#x27;用户模块&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-user&#x27;</span>,<span class="number">0</span>),(<span class="number">2</span>,<span class="string">&#x27;user:add&#x27;</span>,<span class="string">&#x27;新增&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-plus&#x27;</span>,<span class="number">1</span>),(<span class="number">3</span>,<span class="string">&#x27;user:delete&#x27;</span>,<span class="string">&#x27;删除&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-remove&#x27;</span>,<span class="number">1</span>),(<span class="number">4</span>,<span class="string">&#x27;user:update&#x27;</span>,<span class="string">&#x27;更新&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-pencil&#x27;</span>,<span class="number">1</span>),(<span class="number">5</span>,<span class="string">&#x27;user:get&#x27;</span>,<span class="string">&#x27;查询&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-zoom-in&#x27;</span>,<span class="number">1</span>),(<span class="number">6</span>,<span class="string">&#x27;user:assign:role&#x27;</span>,<span class="string">&#x27;授予角色&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-user&#x27;</span>,<span class="number">1</span>),(<span class="number">7</span>,<span class="keyword">NULL</span>,<span class="string">&#x27;角色模块&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-heart&#x27;</span>,<span class="number">0</span>),(<span class="number">8</span>,<span class="string">&#x27;role:add&#x27;</span>,<span class="string">&#x27;新增&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-plus&#x27;</span>,<span class="number">7</span>),(<span class="number">9</span>,<span class="string">&#x27;role:delete&#x27;</span>,<span class="string">&#x27;删除&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-remove&#x27;</span>,<span class="number">7</span>),(<span class="number">10</span>,<span class="string">&#x27;role:get&#x27;</span>,<span class="string">&#x27;查询&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-zoom-in&#x27;</span>,<span class="number">7</span>),(<span class="number">11</span>,<span class="string">&#x27;role:update&#x27;</span>,<span class="string">&#x27;修改&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-pencil&#x27;</span>,<span class="number">7</span>),(<span class="number">12</span>,<span class="string">&#x27;role:assign:permission&#x27;</span>,<span class="string">&#x27;授予权限&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-user&#x27;</span>,<span class="number">7</span>),(<span class="number">13</span>,<span class="keyword">NULL</span>,<span class="string">&#x27;菜单模块&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-th-list&#x27;</span>,<span class="number">0</span>),(<span class="number">14</span>,<span class="string">&#x27;menu:add&#x27;</span>,<span class="string">&#x27;新增&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-plus&#x27;</span>,<span class="number">13</span>),(<span class="number">15</span>,<span class="string">&#x27;menu:delete&#x27;</span>,<span class="string">&#x27;删除&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-remove&#x27;</span>,<span class="number">13</span>),(<span class="number">16</span>,<span class="string">&#x27;menu:update&#x27;</span>,<span class="string">&#x27;修改&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-pencil&#x27;</span>,<span class="number">13</span>),(<span class="number">17</span>,<span class="string">&#x27;menu:get&#x27;</span>,<span class="string">&#x27;查询&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-zoom-in&#x27;</span>,<span class="number">13</span>),(<span class="number">18</span>,<span class="string">&#x27;menu:assign:permission&#x27;</span>,<span class="string">&#x27;授予权限&#x27;</span>,<span class="string">&#x27;glyphicon glyphicon-user&#x27;</span>,<span class="number">13</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t_role` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">44</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span>  <span class="keyword">into</span> `t_role`(`id`,`name`) <span class="keyword">values</span> (<span class="number">1</span>,<span class="string">&#x27;PM - 项目经理&#x27;</span>),(<span class="number">2</span>,<span class="string">&#x27;SE - 软件工程师&#x27;</span>),(<span class="number">3</span>,<span class="string">&#x27;PG - 程序员&#x27;</span>),(<span class="number">4</span>,<span class="string">&#x27;TL - 组长&#x27;</span>),(<span class="number">5</span>,<span class="string">&#x27;GL - 组长&#x27;</span>),(<span class="number">6</span>,<span class="string">&#x27;QA - 品质保证&#x27;</span>),(<span class="number">7</span>,<span class="string">&#x27;QC - 品质控制&#x27;</span>),(<span class="number">8</span>,<span class="string">&#x27;SA - 软件架构师&#x27;</span>),(<span class="number">9</span>,<span class="string">&#x27;CMO / CMS - 配置管理员&#x27;</span>),(<span class="number">10</span>,<span class="string">&#x27;测试工程师&#x27;</span>),(<span class="number">11</span>,<span class="string">&#x27;审批人员&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t_role_permission` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `roleid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `permissionid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> (`id`),</span><br><span class="line">  KEY `FK_Reference_3` (`roleid`),</span><br><span class="line">  KEY `FK_Reference_4` (`permissionid`),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> `FK_Reference_4` <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (`permissionid`) <span class="keyword">REFERENCES</span> `t_permission` (`id`),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> `FK_Reference_3` <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (`roleid`) <span class="keyword">REFERENCES</span> `t_role` (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">14</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span>  <span class="keyword">into</span> `t_role_permission`(`id`,`roleid`,`permissionid`) <span class="keyword">values</span> (<span class="number">7</span>,<span class="number">1</span>,<span class="number">1</span>),(<span class="number">8</span>,<span class="number">1</span>,<span class="number">2</span>),(<span class="number">9</span>,<span class="number">1</span>,<span class="number">6</span>),(<span class="number">10</span>,<span class="number">1</span>,<span class="number">13</span>),(<span class="number">11</span>,<span class="number">1</span>,<span class="number">16</span>),(<span class="number">12</span>,<span class="number">1</span>,<span class="number">17</span>),(<span class="number">13</span>,<span class="number">1</span>,<span class="number">18</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t_admin_role` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `adminid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `roleid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> (`id`),</span><br><span class="line">  KEY `FK_Reference_1` (`adminid`),</span><br><span class="line">  KEY `FK_Reference_2` (`roleid`),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> `FK_Reference_2` <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (`roleid`) <span class="keyword">REFERENCES</span> `t_role` (`id`),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> `FK_Reference_1` <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (`adminid`) <span class="keyword">REFERENCES</span> `t_admin` (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">15</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span>  <span class="keyword">into</span> `t_admin_role`(`id`,`adminid`,`roleid`) <span class="keyword">values</span> (<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>),(<span class="number">9</span>,<span class="number">1</span>,<span class="number">4</span>),(<span class="number">11</span>,<span class="number">1</span>,<span class="number">8</span>),(<span class="number">12</span>,<span class="number">15</span>,<span class="number">1</span>),(<span class="number">13</span>,<span class="number">15</span>,<span class="number">2</span>),(<span class="number">14</span>,<span class="number">15</span>,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t_permission_menu` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `menuid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `permissionid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> (`id`),</span><br><span class="line">  KEY `FK_Reference_10` (`menuid`),</span><br><span class="line">  KEY `FK_Reference_9` (`permissionid`),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> `FK_Reference_10` <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (`menuid`) <span class="keyword">REFERENCES</span> `t_menu` (`id`),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> `FK_Reference_9` <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (`permissionid`) <span class="keyword">REFERENCES</span> `t_permission` (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">19</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span>  <span class="keyword">into</span> `t_permission_menu`(`id`,`menuid`,`permissionid`) <span class="keyword">values</span> (<span class="number">7</span>,<span class="number">2</span>,<span class="number">1</span>),(<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>),(<span class="number">9</span>,<span class="number">2</span>,<span class="number">3</span>),(<span class="number">10</span>,<span class="number">2</span>,<span class="number">4</span>),(<span class="number">11</span>,<span class="number">2</span>,<span class="number">5</span>),(<span class="number">12</span>,<span class="number">2</span>,<span class="number">6</span>),(<span class="number">13</span>,<span class="number">2</span>,<span class="number">7</span>),(<span class="number">14</span>,<span class="number">2</span>,<span class="number">8</span>),(<span class="number">15</span>,<span class="number">2</span>,<span class="number">9</span>),(<span class="number">16</span>,<span class="number">2</span>,<span class="number">10</span>),(<span class="number">17</span>,<span class="number">2</span>,<span class="number">11</span>),(<span class="number">18</span>,<span class="number">2</span>,<span class="number">12</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>配置 configure(AuthenticationManagerBuilder auth)</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">UserDetailsService userDetailsService;<span class="comment">//用户详情查询服务组件的接口</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	<span class="comment">//根据用户名查询出用户的详细信息</span></span><br><span class="line">	auth.userDetailsService(userDetailsService);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>编写 UserDetailService 实现</strong></p>
+</blockquote>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210204160558.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210204160558.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210204160515382"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDetailsServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String username)</span> <span class="keyword">throws</span> UsernameNotFoundException </span>&#123;</span><br><span class="line">        String queryUser = <span class="string">&quot;SELECT * FROM `t_admin` WHERE loginacct=?&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1、查询指定用户的信息</span></span><br><span class="line">        Map&lt;String, Object&gt; map = jdbcTemplate.queryForMap(queryUser, username);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2、将查询到的用户封装到框架使用的UserDetails里面</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(map.get(<span class="string">&quot;loginacct&quot;</span>).toString(), map.get(<span class="string">&quot;userpswd&quot;</span>).toString(),</span><br><span class="line">                AuthorityUtils.createAuthorityList(<span class="string">&quot;ADMIN&quot;</span>, <span class="string">&quot;USER&quot;</span>));<span class="comment">//暂时写死，过后数据库中查</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>运行测试结果，密码不一致，跳转到登录页，并提示错误消息</strong></p>
+</blockquote>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210204160602.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210204160602.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210204160556591"></p>
+<h3 id="2、基于数据库-MD5-密码-认证"><a href="#2、基于数据库-MD5-密码-认证" class="headerlink" title="2、基于数据库(MD5 密码)认证"></a>2、基于数据库(MD5 密码)认证</h3><h4 id="2-1-配置-configure-AuthenticationManagerBuilder-auth"><a href="#2-1-配置-configure-AuthenticationManagerBuilder-auth" class="headerlink" title="2.1 配置 configure(AuthenticationManagerBuilder auth)"></a>2.1 配置 configure(AuthenticationManagerBuilder auth)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">UserDetailsService userDetailsService;<span class="comment">//用户详情查询服务组件的接口</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">PasswordEncoder passwordEncoder;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-引入-MD5-加密工具类：MD5Util-java"><a href="#2-2-引入-MD5-加密工具类：MD5Util-java" class="headerlink" title="2.2 引入 MD5 加密工具类：MD5Util.java"></a>2.2 引入 MD5 加密工具类：MD5Util.java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.oy.security.component;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * MD5算法 哈希算法 MD5算法具有以下特点： 1、压缩性：任意长度的数据，算出的MD5值长度都是固定的。 2、容易计算：从原数据计算出MD5值很容易。</span></span><br><span class="line"><span class="comment"> * 3、抗修改性：对原数据进行任何改动，哪怕只修改1个字节，所得到的MD5值都有很大区别。</span></span><br><span class="line"><span class="comment"> * 4、强抗碰撞：已知原数据和其MD5值，想找到一个具有相同MD5值的数据（即伪造数据）是非常困难的。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MD5Util</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">digest16</span><span class="params">(String inStr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> digest(inStr, <span class="number">16</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">digest</span><span class="params">(String inStr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> digest(inStr, <span class="number">32</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">digest</span><span class="params">(String inStr, <span class="keyword">int</span> rang)</span> </span>&#123;</span><br><span class="line">		MessageDigest md5 = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span> (StringUtil.isEmpty(inStr)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			md5 = MessageDigest.getInstance(<span class="string">&quot;MD5&quot;</span>); <span class="comment">// 取得算法</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">char</span>[] charArray = inStr.toCharArray();</span><br><span class="line">		<span class="keyword">byte</span>[] byteArray = <span class="keyword">new</span> <span class="keyword">byte</span>[charArray.length];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charArray.length; i++) &#123;</span><br><span class="line">			byteArray[i] = (<span class="keyword">byte</span>) charArray[i];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">byte</span>[] md5Bytes = md5.digest(byteArray); <span class="comment">// 加密</span></span><br><span class="line"></span><br><span class="line">		StringBuilder hexValue = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; md5Bytes.length; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> val = ((<span class="keyword">int</span>) md5Bytes[i]) &amp; <span class="number">0xff</span>;</span><br><span class="line">			<span class="keyword">if</span> (val &lt; <span class="number">16</span>)</span><br><span class="line">				hexValue.append(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">			hexValue.append(Integer.toHexString(val));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (rang == <span class="number">32</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> hexValue.toString();</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> hexValue.toString().substring(<span class="number">8</span>, <span class="number">24</span>);<span class="comment">// 转换为32位字符串</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		String s = <span class="keyword">new</span> String(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">		System.out.println(digest(s));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-PasswordEncoder-接口实现类：PasswordEncoderImpl"><a href="#2-3-PasswordEncoder-接口实现类：PasswordEncoderImpl" class="headerlink" title="2.3 PasswordEncoder 接口实现类：PasswordEncoderImpl"></a>2.3 PasswordEncoder 接口实现类：PasswordEncoderImpl</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PasswordEncoderImpl</span> <span class="keyword">implements</span> <span class="title">PasswordEncoder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  密码加密的算法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> charSequence</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">encode</span><span class="params">(CharSequence charSequence)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> MD5Util.digest(charSequence.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 比较登录密码和数据库存储密码是否一致</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> charSequence 页面的明文密码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s 数据库的密文密码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(CharSequence charSequence, String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s.equals(MD5Util.digest(charSequence.toString()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、基于数据库-BCryptPasswordEncoder-密码加密认证"><a href="#3、基于数据库-BCryptPasswordEncoder-密码加密认证" class="headerlink" title="3、基于数据库(BCryptPasswordEncoder)密码加密认证"></a>3、基于数据库(BCryptPasswordEncoder)密码加密认证</h3><h4 id="3-1-PasswordEncoder-接口"><a href="#3-1-PasswordEncoder-接口" class="headerlink" title="3.1 PasswordEncoder 接口"></a>3.1 PasswordEncoder 接口</h4><p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210204163304.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210204163304.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210204163302959"></p>
+<h4 id="3-2-使用-BCryptPasswordEncoder-进行密码加密"><a href="#3-2-使用-BCryptPasswordEncoder-进行密码加密" class="headerlink" title="3.2 使用 BCryptPasswordEncoder 进行密码加密"></a>3.2 使用 BCryptPasswordEncoder 进行密码加密</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 推荐密码加密器用这个 BCryptPasswordEncoder; 将一个字符串加密成一个永不重复的密文</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="comment">// 1、加盐+加随机数</span></span><br><span class="line">auth.userDetailsService(userDetailsService).passwordEncoder(<span class="keyword">new</span> BCryptPasswordEncoder());</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-本地测试"><a href="#3-3-本地测试" class="headerlink" title="3.3 本地测试"></a>3.3 本地测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BCryptPasswordEncoderTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        BCryptPasswordEncoder pe = <span class="keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line"></span><br><span class="line">        String encode = pe.encode(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">        System.out.println(encode);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. $2a$10$9MeQiXyoq.DVWmdNPC7/TuiwOPCSmeT0xLbMWkUrbAF5.Pnq2mdEK</span></span><br><span class="line">        <span class="comment">// 2. $2a$10$gqjnDfOJ/c9Stvz6pQFXLOHxIQzSpOQXgcgJxpsMgglAtDrMY2Kda</span></span><br><span class="line">        <span class="comment">// 3. $2a$10$tnjbeb0J1vUdynJeu.IYiu5TPQwmrBUiYa0pfgIZIIuQ3r4yIt/ea</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-4-服务器运行测试"><a href="#3-4-服务器运行测试" class="headerlink" title="3.4 服务器运行测试"></a>3.4 服务器运行测试</h4><p>将生成的密文存储到数据库中（注意：<code>userpswd字段长度</code>）把 userpaswd 字段长度扩大，重新启动服务器进行测试。</p>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210204164521.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210204164521.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210204164520586"></p>
+
+  
+  
+  
+  <div class='footer'>
+    
+    
+    
+  <div class="related_posts">
+    <section class='header'>
+      <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
+    </section>
+    <section class='body'>
+      <div class="vlts-rps"><a class="item" href="/posts/1738458658.html" title="Spring5之AOP" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200723000710.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200723000710.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Spring5之AOP</span></a><a class="item" href="/posts/1762820479.html" title="Spring5之JdbcTemplate" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200725233447.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200725233447.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Spring5之JdbcTemplate</span></a><a class="item" href="/posts/2817363972.html" title="Spring5之事务的操作" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200726231546.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200726231546.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">Spring5之事务的操作</span></a><a class="item" href="/posts/3991296734.html" title="SpringBoot与Dubbo、Zookeeper" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20201003222226.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20201003222226.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">SpringBoot与Dubbo、Zookeeper</span></a></div></section></div>
+    
+    
+    <div class='copyright'>
+      <blockquote>
+        
+        
+        <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+        
+        
+        
+        <p>本文永久链接是：<a href=http://blog.oy6090.top/posts/f1d1d958.html>http://blog.oy6090.top/posts/f1d1d958.html</a></p>
+        
+        
+      </blockquote>
+    </div>
+    
+    
+  </div>
+  
+  
+  
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-07T09:00:20+00:00">
+  <a class='notlink'>
+    <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年2月7日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Spring/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>Spring</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.oy6090.top/posts/f1d1d958.html&title=SpringSecurity 基础总结 - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.oy6090.top/posts/f1d1d958.html&title=SpringSecurity 基础总结 - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.oy6090.top/posts/f1d1d958.html&title=SpringSecurity 基础总结 - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+  <div class="prev-next">
+    
+    <a class='prev' href='/posts/4250.html'>
+      <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Vue 基础总结（2.X）</p>
+      <p class='content'>
+GitHub 源码：https://github.com/OYCodeSite/VueCode.git
+
+vue 环境搭建一、初始化项目
+生成 package.json
+
+1yarn init...</p>
+    </a>
+    
+    
+    <a class='next' href='/posts/1c9cc24c.html'>
+      <p class='title'>CentOS 7 安装 MySQL 5.7<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+      <p class='content'>CentOS 7 安装 MySQL 5.7一、下载地址官网下载地址：http://dev.mysql.com/downloads/mysql/
+
+二、拷贝&amp;解压缩注意： 我自己本人使用版...</p>
+    </a>
+    
+  </div>
+  
+</article>
+
+
+
+
+  <article class="post white-box reveal shadow floatable" id="comments">
+    <p ct><i class='fal fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+</div>
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='playlist'
+      id='3175833810'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <div class='copyright'>
+        <p>Copyright © 2020 <a href="/https://oy6090.top">OY</a></p>
+
+        </div>
+      
+    
+      
+        
+          <div><div><p>本站使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://volantis.js.org/" data-pjax-state="">Volantis</a> 作为主题 | 由 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/zh-cn/" data-pjax-state="">Hexo</a> 强力驱动</p> </div></div>
+        
+      
+    
+      
+        
+          <div><p><a rel="noopener" href="https://beian.miit.gov.cn" target="_blank">湘ICP备2020020882号</a> </p>
+</div>
+        
+      
+    
+      
+        
+          <div><p><a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener noreferrer"><img src="https://pic.heson10.com/wallpapers/yun_logo6.png" class="lazyload" data-srcset="https://pic.heson10.com/wallpapers/yun_logo6.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="  width="60px" height="30px"/></a></p>
+</div>
+        
+      
+    
+      
+        
+          <div><script id="ribbon" mobile="true" src="https://cdn.jsdelivr.net/gh/heson525/pic@master/img/ribbons2.js"></script></div>
+        
+      
+    
+    
+      
+        <div class="github-badge">
+          <a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+          <span class="badge-subject">Powered</span><span class="badge-value" style="background-color:#007ec6;">Hexo</span>
+          </a>
+        </div>
+        
+        <div class="github-badge">
+          <a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 vercel">
+          <span class="badge-subject">Host By</span><span class="badge-value" style="background-color:#4dc820;">GitHub & Coding</span>
+          </a>
+        </div>
+        
+        <div class="github-badge">
+          <a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://cloud.tencent.com/" target="_blank" title="腾讯云提供域名相关服务">
+          <span class="badge-subject">DNS</span><span class="badge-value" style="background-color:#8833d7;">TencentCloud</span>
+          </a>
+        </div>
+        
+        <div class="github-badge">
+          <a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" title="又拍云提供加速相关服务">
+          <span class="badge-subject">CDN</span><span class="badge-value" style="background-color:#ce651b;">又拍云</span>
+          </a>
+        </div>
+        
+      
+  </footer>
+
+
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".md").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      // 背景层
+      var bgDiv = document.createElement("div");
+      $(bgDiv).addClass("bg");
+      if ($(this).attr('bg')) {
+        $(bgDiv).css('background', $(this).attr('bg'));
+      }
+      $(this).wrap(bgDiv); // 背景层
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+  
+  
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i>复制文本</a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>复制链接</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>在新标签页打开</a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>复制图片地址</a>
+        <hr id='hr-src'>
+      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
+      <hr>
+      
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=https://oy6090.top
+        
+        
+        
+        
+          id="https:oy6090top"
+        >
+        <i class='fa fa-rss fa-fw'></i> OY博客
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=/bb
+        
+        
+        
+        
+          id="bb"
+        >
+        <i class='fal fa-microphone-alt fa-fw'></i> 哔哔
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' href=https://travellings.now.sh/
+        
+        
+        
+        
+          id="https:travellingsnowsh"
+        >
+        <i class='fal fa-paper-plane fa-fw'></i> 开往
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default' 
+        
+        
+        
+          onclick="document.execCommand('print')"
+        
+        >
+        <i class='fa fa-print fa-fw'></i> 打印页面
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          <li class='music name'>
+            <p class='nav music-title fix-cursor-default'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          copyText.style.display = 'block';
+          hrText.style.display = 'block';
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+
+      // 有音乐播放器
+      if ('true' == true && ('home,examples,contributors,hr,source_docs,hr,print,hr,music'||[]).includes('music')) {
+        // 如果有aplayer，初始化一下
+      	try {
+      		checkAPlayer();
+          updateTitle();
+      	} catch (error) {
+      		console.log(error);
+      	}
+      }
+
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');
+  </script>
+
+
+
+
+
+  <script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+    setTimeout(function() {
+      loadScript('/js/issues.js');
+    }, 1);
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+</script>
+
+
+
+<!-- optional -->
+
+  <script>
+  
+  var SEARCH_SERVICE = "hexo" || "hexo";
+  var ROOT = "/" || "/";
+  if (!ROOT.endsWith('/')) ROOT += '/';
+</script>
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '32px',
+      duration: '800',
+      interval: '20',
+      scale: '1',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '3175833810';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+</script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+
+
+
+  
+<script src="/js/aplayer.js"></script>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "填写邮箱会收到回复提示！粘贴图片可直接上传~";
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "TgARyGMOni4pdtyiyOnkqnEk-MdYXbMMI",
+      appKey: "rn88zNqTT4Ifei9dI245EvMn",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+      master: '[10b35cf3145235a854a43e4ff0bb5c8f]',
+      friends: '[39e43d5ed938a365a398309ad237afaa]'
+    })
+  }
+
+  function newcomment() {
+
+function queryLeanCloud(k) {
+  let root = this;
+  let len = arguments.length;
+  if (len == 1) {
+    let notExist = new AV.Query("Comment");
+    notExist.doesNotExist('rid');
+    let isEmpty = new AV.Query("Comment");
+    isEmpty.equalTo('rid', '');
+    let q = AV.Query.or(notExist, isEmpty);
+    if (k === '*') q.exists('url');
+    else q.equalTo('url', decodeURI(k));
+    q.addDescending('createdAt');
+    q.addDescending('insertedAt');
+    return q;
+  } else {
+    let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
+    let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
+    return AV.Query.doCloudQuery(cql)
+  }
+}
+var valine = new Valine({
+      el: '#valine_container_ba',
+      notify: false,
+      verify: false,
+      app_id: 'TgARyGMOni4pdtyiyOnkqnEk-MdYXbMMI',
+      app_key: 'rn88zNqTT4Ifei9dI245EvMn',
+      placeholder: '发表您的意见，让我们一起交流，共同提高吧...',
+      serverURLs: 'https://xxxx'
+});
+
+//判断博主，heson改为自己的昵称
+function bozhu(e){
+    if (e == "heson"){
+        nick = e + '[博主]'
+        return nick;
+    } else {
+      return e
+    }
+}
+
+//判断网址
+function wangzhi(e){
+    http = e.slice(0,4)
+    https = e.slice(0,5)
+    if (http == "http" || https == "https" ){
+         return e
+    } else if (e == "" || e == null || e == undefined){
+      return e
+    } else {
+      e = 'http://'+ e
+      return e
+    }
+}
+
+
+
+
+//查询评论
+valine.Q('*').limit(7).find().then(function (comments) {
+  var hotComments = $("#hot-comments");
+  for (var i = 0; i < comments.length; i++) {
+    if (i === 0) {
+      console.log(comments[0]);
+    }
+    var nick = bozhu(comments[i]._serverData.nick);
+    var content = comments[i]._serverData.comment;
+    var newcontent = content.replace(/<[^>]+>/g,"").replace(/:.*?:/g,"[表情]").substring(0, 50);
+    var url = comments[i]._serverData.url;
+    var link = wangzhi(comments[i]._serverData.link);
+    var updatedAt = timeago(comments[i].updatedAt);
+    var commentId = '#' + comments[i].id;
+    hotComments.append('<div class="card-comment-item"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a>&nbsp;发表于' + updatedAt + '</div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div>');
+  }
+});
+};
+
+
+
+  $(function () {
+    pjax_valine();
+    newcomment();
+  });
+</script>
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'C1qWqsDatomXVctTafBuJADI-gzGzoHsz',
+    app_key: 'J4CujIoElz1Wo7yLUbY4SOO5',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://blog.oy6090.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://blog.oy6090.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://blog.oy6090.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              if (pv.getAttribute('data-path') == window.location.pathname) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == window.location.pathname) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+<!-- more -->
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = ["/bb/"];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+       
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+        pjax_fancybox();
+        
+        
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          if (typeof IssuesAPI == "undefined") {
+            loadIssuesJS();
+          }
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+          newcomment();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
