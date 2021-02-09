@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="index,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,7 +16,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>分类：工具 - OY&#39;Blog</title>
+  <title>CentOS 7 卸载 Mysql - OY&#39;Blog</title>
+  
+    <meta name="keywords" content="MySQL">
   
 
   
@@ -477,7 +477,7 @@
 
   
   
-      <div class='cover-wrapper  featured' style="display: none;">
+      <div class='cover-wrapper post featured' style="display: none;">
         <canvas id="header_canvas" style="position:absolute;bottom:0;z-index: 1;" width="900" height="350"></canvas>
         
           <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/OY6090/pic@main/oy_img/20210122021433.jpg"></div>
@@ -549,8 +549,8 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">false</div>
-  <div id="pjax-pageTitle"></div>
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">CentOS 7 卸载 Mysql</div>
   <div id="pjax-enable-cover">true</div>
   <div id="pjax-comment-path"></div>
   <div id="pjax-comment-placeholder"></div>
@@ -578,7 +578,6 @@
 
         
         
-
 
 <aside class='l_side'>
   <div style="margin-bottom: 16px;border-radius: 8px;" class='shadow floatable widget_author desktop'>
@@ -863,7 +862,7 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Tue Feb 09 2021 08:33:49 GMT+0000 (Coordinated Universal Time)</div>
+            <div id="last-update" style="display: none;">Tue Feb 09 2021 08:33:34 GMT+0000 (Coordinated Universal Time)</div>
             <div id="last-update-show">2021-02-09 日</div>
           
         </div>
@@ -925,96 +924,288 @@
 
   
 
+  
+    
+    
+
+
+
+
+  
+
 
 </aside>
 
 <div class='l_main'>
+  <article
+  class="article post white-box reveal md shadow floatable article-type-post"
+  id="post" itemscope itemprop="blogPost">
+  
+
+
   
     
       
-  <section class="post-list">
-    
+        <div class='headimg lazyload' data-bg='https://cdn.jsdelivr.net/gh/OY6090/pic@main/oy_img/20210207144452.jpg'></div>
       
+    
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        CentOS 7 卸载 Mysql
+      </h1>
+      <div class='new-meta-box'>
         
           
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/OYCodeSite/CDN@0.2/oy_img/avatar.jpg">
+    <p>OY</p>
+  </a>
+</div>
+
+          
         
-      
-    
-    
-      
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fal fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/MySQL/">MySQL</a>
+    </a>
+  </div>
+
+
+          
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/3554798849.html">
-        Maven基本知识
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fal fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年2月9日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        一、Maven 基本1、自动化构建​ 简单来说就是它可以自动的从建构过程的起点一直执行到终点：
+      <div id="lc-pv" data-title="CentOS 7 卸载 Mysql" data-path="/posts/9103988a.html">
+        <i class="fal fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
 
-2、Maven 核心概念
-POM
-约定的目录结构
-坐标
-依赖管理
-仓库管理
-生命周期
-插件和目标
-继承
-聚合
 
-3、安装使用① 检查 JAVA_HOME 环境变量
+          
+        
+      </div>
+    
+  </div>
 
-② 解压 Maven 的核心程序
-​ 将 apache-maven-3.5.0-bin.zip 解压到一个非中文无空格的目录下。 ...
-      
+
+  
+
+  
+  <p><strong>防止重装</strong></p>
+<ul>
+<li>yum 方式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看yum是否安装过mysql</span></span><br><span class="line">yum list installed mysql*</span><br></pre></td></tr></table></figure>
+<p><code>如或显示了列表，说明系统中有MySQL </code><br><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210209162914.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210209162914.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210209162826025"><br>根据列表上的名字</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum remove mysql-community-client mysql-community-common mysql-community-libs mysql-community-libs-compat mysql-community-server mysql57-community-release</span><br><span class="line">rm -rf /var/lib/mysql</span><br><span class="line">rm /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>rpm 查看安装</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep -i mysql</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210209162928.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20210209162928.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210209162927188"></p>
+<ul>
+<li><strong>rpm 卸载</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mysql57-community-release-el7-9.noarch</span><br><span class="line">rpm -e mysql-community-server-5.7.17-1.el7.x86_64</span><br><span class="line">rpm -e mysql-community-libs-5.7.17-1.el7.x86_64</span><br><span class="line">rpm -e mysql-community-libs-compat-5.7.17-1.el7.x86_64</span><br><span class="line">rpm -e mysql-community-common-5.7.17-1.el7.x86_64</span><br><span class="line">rpm -e mysql-community-client-5.7.17-1.el7.x86_64</span><br><span class="line"><span class="built_in">cd</span> /var/lib/</span><br><span class="line">rm -rf mysql/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>清除余项</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">whereis mysql</span><br><span class="line">mysql: /usr/bin/mysql /usr/lib64/mysql /usr/<span class="built_in">local</span>/mysql /usr/share/mysql /usr/share/man/man1/mysql.1.gz</span><br><span class="line"><span class="comment">#删除上面的文件夹</span></span><br><span class="line">rm -rf /usr/bin/mysql</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>删除配置</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm –rf /usr/my.cnf</span><br><span class="line">rm -rf /root/.mysql_sercret</span><br></pre></td></tr></table></figure>
+<p><strong>剩余配置检查</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --list | grep -i mysql</span><br><span class="line">chkconfig --del mysqld</span><br></pre></td></tr></table></figure>
+<p>根据上面的列表，删除 ,如：<strong>mysqld</strong></p>
+
+  
+  
+  
+  <div class='footer'>
+    
+    
+    
+  <div class="related_posts">
+    <section class='header'>
+      <i class="fal fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span>
+    </section>
+    <section class='body'>
+      <div class="vlts-rps"><a class="item" href="/posts/6b30c31b.html" title="MySQL 主从复制" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20201224155619.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20201224155619.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">MySQL 主从复制</span></a><a class="item" href="/posts/864013447.html" title="MySQL基础" rel="bookmark "><img src="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200809171329.png" class="lazyload" data-srcset="https://gitee.com/oy_chart_bed/no1_drawing_bed/raw/master/20200809171329.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" /><span class="title">MySQL基础</span></a></div></section></div>
+    
+    
+    <div class='copyright'>
+      <blockquote>
+        
+        
+        <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+        
+        
+        
+        <p>本文永久链接是：<a href=http://blog.oy6090.top/posts/9103988a.html>http://blog.oy6090.top/posts/9103988a.html</a></p>
+        
+        
+      </blockquote>
+    </div>
+    
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        <time>2020-08-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-        
-      </div>
+  
+  
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
       
-        <div>
-            <a class='readmore' href='/posts/3554798849.html'>
-            阅读全文
-          </a>
-        </div>
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-09T08:33:10+00:00">
+  <a class='notlink'>
+    <i class="fal fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年2月9日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MySQL/" rel="nofollow"><i class="fal fa-hashtag fa-fw" aria-hidden="true"></i><p>MySQL</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.oy6090.top/posts/9103988a.html&title=CentOS 7 卸载 Mysql - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.oy6090.top/posts/9103988a.html&title=CentOS 7 卸载 Mysql - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.oy6090.top/posts/9103988a.html&title=CentOS 7 卸载 Mysql - OY'Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
+  </div>
+
+
+  
   
 
+  
+  <div class="prev-next">
+    
+    <a class='prev' href='/posts/1c9cc24c.html'>
+      <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>CentOS 7 安装 MySQL 5.7</p>
+      <p class='content'>CentOS 7 安装 MySQL 5.7一、下载地址官网下载地址：http://dev.mysql.com/downloads/mysql/
+
+二、拷贝&amp;解压缩注意： 我自己本人使用版...</p>
+    </a>
+    
+    
+    <a class='next' href='/posts/41875.html'>
+      <p class='title'>Vue 核心基础（2.X）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+      <p class='content'>一、Vue 的基本认识
+官网：
+
+英文官网: https://vuejs.org/
+中文官网: https://cn.vuejs.org/
+
+1、Vue 的特点
+遵循MVVM 模式
+编码简洁，体...</p>
+    </a>
+    
+  </div>
+  
+</article>
+
+
+
+
+  <article class="post white-box reveal shadow floatable" id="comments">
+    <p ct><i class='fal fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
 </div>
-
-
       </div>
       
   
